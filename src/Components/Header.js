@@ -6,13 +6,33 @@ import {BsCart4, BsThreeDotsVertical} from 'react-icons/bs'
 import {BiMessageDetail, BiSearch} from 'react-icons/bi'
 import {RiSecurePaymentFill} from 'react-icons/ri'
 import {MdOutlineMonochromePhotos} from 'react-icons/md'
+import {VscDebugStepBack} from 'react-icons/vsc'
 
 
 export default function Header() {
   return (
     <Container>
       <Wrapper>
-        <Icon0 />
+        <Tog>
+          <Icon0 id='menu' onClick={() =>{
+             document.getElementById("sidebar").style.width = "200px";
+             document.getElementById("menu").style.display = "none";
+             document.getElementById("close").style.display = "block";
+          }} />
+        </Tog>
+        <Sidebar id='sidebar'>
+          <Icon9 id='close' onClick={() =>{
+              document.getElementById("sidebar").style.width = "0";
+              document.getElementById("menu").style.display = "block";
+              document.getElementById("close").style.display = "none";
+              document.getElementById("close").style.transition = "all 300ms";
+            }} />
+            <Cal>Ready to Ship</Cal>
+            <Cal>Person Prospective</Cal>
+            <Cal>Buyer Central</Cal>
+            <Cal>Sell on Alibaba</Cal>
+            <Cal>Help</Cal>
+        </Sidebar>
         <Logo>
           <Icon1 />
           <Span>Alibaba.<span>com</span></Span>
@@ -39,15 +59,50 @@ export default function Header() {
   )
 }
 
-// const Container = styled.div``;
-// const Container = styled.div``;
-// const Container = styled.div``;
-// const Container = styled.div``;
-// const Container = styled.div``;
-// const Container = styled.div``;
-// const Container = styled.div``;
-// const Container = styled.div``;
-const Icon0 = styled(BsThreeDotsVertical)``;
+
+
+
+const Sidebar = styled.div`
+width: 0;
+background-color: #FF6501;
+display: none;
+height: 100vh;
+overflow: hidden;
+position: fixed;
+overflow: hidden;
+top: 0;
+left: 0;
+transition: all 400ms;
+z-index: 1;
+color: #fff;
+
+ @media screen and (max-width: 500px){
+     display: flex;
+     flex-direction: column;
+     justify-content: center;
+     align-items: center;
+ }
+`;
+const Cal = styled.div`
+font-size: 1rem;
+padding: 12px 0;
+cursor: pointer;
+`;
+const Tog = styled.div``;
+const Icon0 = styled(BsThreeDotsVertical)`
+display: none;
+@media screen and (max-width: 768px){
+  display: block;
+  font-size: 1.3rem;
+}
+`;
+const Icon9 = styled(VscDebugStepBack)`
+display: none;
+@media screen and (max-width: 768px){
+  display: block;
+  font-size: 1.3rem;
+}
+`;
 const Spansearch = styled.div`
 font-size: 1.1rem;
 font-weight: 600;
